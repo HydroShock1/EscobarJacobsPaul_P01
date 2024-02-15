@@ -6,7 +6,7 @@
             "id": "ad1ea8af-2f85-44c8-a156-b1cab7c1a8df",
             "actions": [
                 {
-                    "name": "ThrowPosition",
+                    "name": "TouchPosition",
                     "type": "Value",
                     "id": "a813488a-a204-4070-b84c-7ec790360065",
                     "expectedControlType": "Vector2",
@@ -15,7 +15,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "ThrowPress",
+                    "name": "TouchPress",
                     "type": "Button",
                     "id": "dea6b0c8-5ce5-4356-bea3-e64d748bc8e6",
                     "expectedControlType": "Button",
@@ -32,7 +32,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ThrowPosition",
+                    "action": "TouchPosition",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -43,7 +43,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ThrowPress",
+                    "action": "TouchPress",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
