@@ -22,7 +22,6 @@ public class InputBroadcaster : MonoBehaviour
     private void OnEnable()
     {
         touchPressAction.performed += TouchPressed;
-        IsTapPressed = true;
     }
 
     private void OnDisable()
@@ -35,6 +34,6 @@ public class InputBroadcaster : MonoBehaviour
     {
 
         float value = context.ReadValue<float>();
-        Debug.Log(value);
+        IsTapPressed = true;
     }
 }
