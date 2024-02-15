@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameSetupState : State
+public class GamePlayState : State
 {
     private GameSFM _stateMachine;
     private GameController _controller;
 
-    public GameSetupState(GameSFM stateMachine, GameController controller)
+    public GamePlayState(GameSFM stateMachine, GameController controller)
     {
         _stateMachine = stateMachine;
         _controller = controller;
@@ -17,9 +17,9 @@ public class GameSetupState : State
     {
         base.Enter();
 
-        Debug.Log("STATE: Game Setup");
-        Debug.Log("Load Save Data");
-        Debug.Log("Spawn Units");
+        Debug.Log("STATE: Game Play");
+        Debug.Log("Listen for Player Inputs");
+        Debug.Log("Display Player HUD");
     }
 
     public override void Exit()
@@ -35,7 +35,7 @@ public class GameSetupState : State
     public override void Tick()
     {
         base.Tick();
-
-        _stateMachine.ChangeState(_stateMachine.PlayState);
+        Debug.Log("Checking for Win Condition");
+        Debug.Log("Checking for Lose Condition");
     }
 }
