@@ -1,39 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class InputBroadcaster : MonoBehaviour
 {
     public bool IsTapPressed { get; private set; } = false;
 
-    private PlayerInput playerInput;
 
-    private InputAction touchPositionAction;
-    private InputAction touchPressAction;
-
-    private void Awake()
+    private void Update()
     {
-        playerInput = GetComponent<PlayerInput>();
-        touchPressAction = playerInput.actions["TouchPress"];
-        touchPositionAction = playerInput.actions["TouchPosition"];
-    }
+        if(Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            IsTapPressed = true;
+        }
 
-    private void OnEnable()
-    {
-        touchPressAction.performed += TouchPressed;
-    }
-
-    private void OnDisable()
-    {
-        touchPressAction.performed -= TouchPressed;
-        IsTapPressed = false;
-    }
-
-    private void TouchPressed(InputAction.CallbackContext context)
-    {
-
-        float value = context.ReadValue<float>();
-        IsTapPressed = true;
+        else if (Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            IsTapPressed = false;
+        }
     }
 }
