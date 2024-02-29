@@ -20,6 +20,8 @@ public class BallThrower : MonoBehaviour
     private Vector3 newPosition;
     Rigidbody rb;
 
+
+
     // Start is called before the first frame update
     void Start()
     {

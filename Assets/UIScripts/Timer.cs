@@ -17,6 +17,7 @@ public class Timer : MonoBehaviour
     public Text finalScoreText; // Reference to the UI text to display the score
     public Text winLoseText; // Reference to the UI text to dispy win/lose message
     public GameObject retryButtonGameObject; // Reference to the RetryButton GameObject
+    public GameObject backgroundGameObject; // Reference to the RetryButton GameObject
 
 
     private void Start()
@@ -31,6 +32,7 @@ public class Timer : MonoBehaviour
             retryButtonGameObject.SetActive(false);
         }
         winLoseText.gameObject.SetActive(false);
+        backgroundGameObject.SetActive(false);
     }
 
     private void Update()
@@ -67,6 +69,7 @@ public class Timer : MonoBehaviour
         Time.timeScale = 0f; // Freeze the game
         timerText.enabled = false; // Disable the timer text
         scoreText.enabled = false; // Disable the score text
+        backgroundGameObject.SetActive(true);
         retryButtonGameObject.SetActive(true); // Make the RetryButton GameObject active
 
         // Show final score
