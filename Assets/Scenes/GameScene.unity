@@ -3075,7 +3075,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f17f50058a450e4f8f71f95001c23b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalTime: 10
+  totalTime: 30
   timerText: {fileID: 1529709462}
   scoreText: {fileID: 1395751422}
   finalScoreText: {fileID: 1862239387}
