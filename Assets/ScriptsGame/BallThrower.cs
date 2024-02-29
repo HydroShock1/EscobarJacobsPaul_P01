@@ -52,10 +52,15 @@ public class BallThrower : MonoBehaviour
 
     void PickupBall()
     {
-        Vector3 mousePos = Input.mousePosition;
-        mousePos.z = Camera.main.nearClipPlane * 5f;
-        newPosition = Camera.main.ScreenToWorldPoint(mousePos);
-        Ball.transform.localPosition = Vector3.Lerp(Ball.transform.localPosition, newPosition, 80f * Time.deltaTime);
+        // Touch input handling for moving the ball
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+            Vector3 touchPosition = touch.position;
+            touchPosition.z = Camera.main.nearClipPlane * 5f;
+            newPosition = Camera.main.ScreenToWorldPoint(touchPosition);
+            Ball.transform.localPosition = Vector3.Lerp(Ball.transform.localPosition, newPosition, 80f * Time.deltaTime);
+        }
     }
 
     private void Update()
@@ -66,41 +71,47 @@ public class BallThrower : MonoBehaviour
         if (thrown)
             return;
 
-        if (Input.GetMouseButtonDown(0))
+        // Touch input detection for throwing the ball
+        if (Input.touchCount > 0)
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit _hit;
+            Touch touch = Input.GetTouch(0);
 
-            if (Physics.Raycast(ray, out _hit, 100f))
+            if (touch.phase == TouchPhase.Began)
             {
-                if (_hit.transform == Ball.transform)
+                Ray ray = Camera.main.ScreenPointToRay(touch.position);
+                RaycastHit _hit;
+
+                if (Physics.Raycast(ray, out _hit, 100f))
                 {
-                    startTime = Time.time;
-                    startPos = Input.mousePosition;
-                    holding = true;
+                    if (_hit.transform == Ball.transform)
+                    {
+                        startTime = Time.time;
+                        startPos = touch.position;
+                        holding = true;
+                    }
                 }
             }
-        }
-        else if (Input.GetMouseButtonUp(0))
-        {
-            endTime = Time.time;
-            endPos = Input.mousePosition;
-            swipeDistance = (endPos - startPos).magnitude;
-            swipeTime = endTime - startTime;
-
-            if (swipeTime < 0.5f && swipeDistance > 30f)
+            else if (touch.phase == TouchPhase.Ended)
             {
-                //throw ball
-                CalSpeed();
-                CalAngle();
-                rb.AddForce(new Vector3((angle.x * BallSpeed), (angle.y * BallSpeed / 3), (angle.z * BallSpeed) * 2));
-                rb.useGravity = true;
-                holding = false;
-                thrown = true;
-                Invoke("ResetBall", 4f);
+                endTime = Time.time;
+                endPos = touch.position;
+                swipeDistance = (endPos - startPos).magnitude;
+                swipeTime = endTime - startTime;
+
+                if (swipeTime < 0.5f && swipeDistance > 30f)
+                {
+                    //throw ball
+                    CalSpeed();
+                    CalAngle();
+                    rb.AddForce(new Vector3((angle.x * BallSpeed), (angle.y * BallSpeed / 3), (angle.z * BallSpeed) * 2));
+                    rb.useGravity = true;
+                    holding = false;
+                    thrown = true;
+                    Invoke("ResetBall", 4f);
+                }
+                else
+                    ResetBall();
             }
-            else
-                ResetBall();
         }
     }
 
