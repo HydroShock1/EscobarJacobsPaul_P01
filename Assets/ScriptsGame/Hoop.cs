@@ -11,7 +11,8 @@ public class Hoop : MonoBehaviour
 
     private Vector3 initialPosition;
 
-    private int score = 0;
+
+    private Timer timer;
 
     void Start()
     {
@@ -23,6 +24,13 @@ public class Hoop : MonoBehaviour
         if (ballThrower == null)
         {
             Debug.LogError("BallThrower script not found.");
+        }
+
+        // Find the Timer script in the scene
+        timer = FindObjectOfType<Timer>();
+        if (timer == null)
+        {
+            Debug.LogError("Timer script not found.");
         }
     }
     void Update()
@@ -40,11 +48,12 @@ public class Hoop : MonoBehaviour
         {
             // Call the ResetBall() method from the BallThrower script
             ballThrower.ResetBall();
-            Debug.Log("SCORE");
 
             // Increment the score
-            score++;
-            Debug.Log("Score: " + score);
+            timer.IncrementScore(1); // You can adjust the points as needed
+            Debug.Log("SCORE");
+
+            timer.CheckWinLose(); // Check win/lose condition
         }
     }
 }
