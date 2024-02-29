@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameScene : MonoBehaviour
+public class RetryButton : MonoBehaviour
 {
-    public void MainMenu()
+    public void OnRetryButtonClick()
     {
-        SceneManager.LoadScene("MenuScene");
+        // Reload the current scene
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
         // Reset time scale to unfreeze the game
         Time.timeScale = 1f;
     }
 }
+

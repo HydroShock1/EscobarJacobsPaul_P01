@@ -11,6 +11,8 @@ public class Hoop : MonoBehaviour
 
     private Vector3 initialPosition;
 
+    private int score = 0;
+
     void Start()
     {
         // Store the initial position of the hoop
@@ -39,6 +41,10 @@ public class Hoop : MonoBehaviour
             // Call the ResetBall() method from the BallThrower script
             ballThrower.ResetBall();
             Debug.Log("SCORE");
+
+            // Increment the score
+            score++;
+            Debug.Log("Score: " + score);
         }
     }
 }
