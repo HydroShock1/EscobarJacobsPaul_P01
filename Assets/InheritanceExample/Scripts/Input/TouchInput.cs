@@ -18,6 +18,7 @@ public class TouchInput : MonoBehaviour
             // update touch location
             Touch touch = Input.GetTouch(0);
             // detect if this touch just happened
+            Debug.Log("STATE: 2");
             if (touch.phase == TouchPhase.Began)
             {
                 Clicked?.Invoke();

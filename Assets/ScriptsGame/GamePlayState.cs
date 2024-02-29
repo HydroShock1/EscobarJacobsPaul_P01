@@ -25,6 +25,8 @@ public class GamePlayState : State
     public override void Exit()
     {
         base.Exit();
+
+        Debug.Log("Buh BYe");
     }
 
     public override void FixedTick()

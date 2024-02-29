@@ -1,20 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class InputBroadcaster : MonoBehaviour
 {
+    public static event Action Clicked;
+
+    public Vector2 TouchScreenPosition { get; private set; }
     public bool IsTapPressed { get; private set; } = false;
 
-
-    private void Update()
+    void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Mouse0))
+        if(Input.touchCount > 0)
         {
             IsTapPressed = true;
+            // update touch location
+            Touch touch = Input.GetTouch(0);
+            // detect if this touch just happened
+            if (touch.phase == TouchPhase.Began)
+            {
+                Clicked?.Invoke();
+            }
+            //update location
+            TouchScreenPosition = touch.position;
         }
-
-        else if (Input.GetKeyUp(KeyCode.Mouse0))
+        else
         {
             IsTapPressed = false;
         }
