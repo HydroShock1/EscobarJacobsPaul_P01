@@ -34,7 +34,7 @@ public class BallThrower : MonoBehaviour
         ResetBall();
     }
 
-    void ResetBall()
+    public void ResetBall()
     {
         angle = Vector3.zero;
         endPos = Vector2.zero;
@@ -107,7 +107,6 @@ public class BallThrower : MonoBehaviour
                     rb.useGravity = true;
                     holding = false;
                     thrown = true;
-                    Invoke("ResetBall", 4f);
                 }
                 else
                     ResetBall();

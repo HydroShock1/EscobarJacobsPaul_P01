@@ -38,7 +38,7 @@ public class GamePlayState : State
     {
         base.Tick();
         
-        if(_controller.Input.IsTapPressed == true)
+       /* if(_controller.Input.IsTapPressed == true)
         {
             Debug.Log("You Win!");
         }
@@ -46,6 +46,6 @@ public class GamePlayState : State
         else if (StateDuration >= _controller.TapLimitDuration)
         {
             Debug.Log("You Lose!");
-        }
+        } */
     }
 }
