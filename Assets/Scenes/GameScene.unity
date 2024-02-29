@@ -1243,11 +1243,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04b336f66eba3fa4580e1f24da02a9ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <PlayerUnitPrefab>k__BackingField: {fileID: 1156855785158620232, guid: e5d23db0362dc3544b2ab053e0408b14,
+  _tapLimitDuration: 2.5
+  _playerUnitPrefab: {fileID: 1156855785158620232, guid: e5d23db0362dc3544b2ab053e0408b14,
     type: 3}
-  <PlayerUnitSpawnLocation>k__BackingField: {fileID: 1651656457}
-  <UnitSpawner>k__BackingField: {fileID: 761567379}
-  <Input>k__BackingField: {fileID: 1642139261}
+  _playerUnitSpawnLocation: {fileID: 1651656457}
+  _unitSpawner: {fileID: 761567379}
+  _input: {fileID: 1642139261}
 --- !u!4 &1859033458
 Transform:
   m_ObjectHideFlags: 0
