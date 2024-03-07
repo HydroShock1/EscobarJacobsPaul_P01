@@ -10,7 +10,6 @@ public class KillVolume : MonoBehaviour
     void Start()
     {
 
-        // Find the BallThrower script attached to the GameObject with the BallThrower script
         ballThrower = FindObjectOfType<BallThrower>();
         if (ballThrower == null)
         {
@@ -21,7 +20,6 @@ public class KillVolume : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            // Call the ResetBall() method from the BallThrower script
             ballThrower.ResetBall();
             Debug.Log("Dead");
         }

@@ -19,14 +19,12 @@ public class Hoop : MonoBehaviour
         // Store the initial position of the hoop
         initialPosition = transform.position;
 
-        // Find the BallThrower script attached to the GameObject with the BallThrower script
         ballThrower = FindObjectOfType<BallThrower>();
         if (ballThrower == null)
         {
             Debug.LogError("BallThrower script not found.");
         }
 
-        // Find the Timer script in the scene
         timer = FindObjectOfType<Timer>();
         if (timer == null)
         {
@@ -35,10 +33,8 @@ public class Hoop : MonoBehaviour
     }
     void Update()
     {
-        // Calculate the horizontal movement using Mathf.Sin to create a smooth oscillating motion
         float horizontalMovement = Mathf.Sin(Time.time * moveSpeed) * moveDistance;
 
-        // Update the position of the hoop
         transform.position = initialPosition + new Vector3(horizontalMovement, 0f, 0f);
     }
 
@@ -46,14 +42,12 @@ public class Hoop : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            // Call the ResetBall() method from the BallThrower script
             ballThrower.ResetBall();
 
-            // Increment the score
-            timer.IncrementScore(1); // You can adjust the points as needed
+            timer.IncrementScore(1); 
             Debug.Log("SCORE");
 
-            timer.CheckWinLose(); // Check win/lose condition
+            timer.CheckWinLose(); 
         }
     }
 }
