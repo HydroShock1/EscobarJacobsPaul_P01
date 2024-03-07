@@ -13,6 +13,8 @@ public class Hoop : MonoBehaviour
 
 
     private Timer timer;
+    public AudioSource SFX;
+    public AudioClip sfx3;
 
     void Start()
     {
@@ -44,10 +46,10 @@ public class Hoop : MonoBehaviour
         {
             ballThrower.ResetBall();
 
-            timer.IncrementScore(1); 
+            timer.IncrementScore(1);
+            SFX.clip = sfx3;
+            SFX.Play();
             Debug.Log("SCORE");
-
-            timer.CheckWinLose(); 
         }
     }
 }

@@ -18,6 +18,10 @@ public class Timer : MonoBehaviour
     public Text winLoseText;
     public GameObject retryButtonGameObject;
     public GameObject backgroundGameObject;
+    public AudioSource SFX;
+    public AudioClip sfx1, sfx2;
+
+    public float sfx1Volume = 0.3f;
 
 
     private void Start()
@@ -71,6 +75,22 @@ public class Timer : MonoBehaviour
 
         winLoseText.gameObject.SetActive(true);
 
+        if (score >= 10)
+        {
+            Debug.Log("You Won!");
+            SFX.clip = sfx1;
+            SFX.volume = sfx1Volume;
+            SFX.Play();
+            EndGameWin(); // Win
+        }
+        else
+        {
+            Debug.Log("You Lost!");
+            SFX.clip = sfx2;
+            SFX.Play();
+            EndGameLose(); // Lose
+        }
+
     }
     public void IncrementScore(int points)
     {
@@ -106,18 +126,4 @@ public class Timer : MonoBehaviour
         winLoseText.text = "YOU LOSE!";
     }
 
-
-    public void CheckWinLose()
-    {
-        if (score >= 10)
-        {
-            Debug.Log("Game Over - You Win!");
-            EndGameWin(); // Win
-        }
-        else if (score < 10)
-        {
-            Debug.Log("Game Over - You Lose!");
-            EndGameLose(); // Lose
-        }
-    }
 }
